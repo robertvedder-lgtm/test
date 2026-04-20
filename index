@@ -1,0 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+const supabase = window.supabase.createClient(
+  "TU_SUPABASE_URL",
+  "TU_ANON_KEY"
+);
+</script>
