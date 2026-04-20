@@ -1,0 +1,8 @@
+async function crearJob(){
+  await supabase.from('jobs').insert({
+    tipo: "Estado financiero",
+    estatus: "En proceso",
+    avance: 10,
+    responsable_id: (await supabase.auth.getUser()).data.user.id
+  });
+}
