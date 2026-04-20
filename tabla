@@ -1,0 +1,27 @@
+async function loadJobs(){
+  const { data, error } = await supabase
+    .from('jobs')
+    .select(`
+      *,
+      clientes(nombre, rfc)
+    `);
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  jobs = data.map(j => ({
+    cliente: j.clientes?.nombre,
+    rfc: j.clientes?.rfc,
+    tipo: j.tipo,
+    estatus: j.estatus,
+    avance: j.avance,
+    fecha: j.fecha_compromiso,
+    dias: 5,
+    responsable: j.responsable_id
+  }));
+
+  filteredJobs = [...jobs];
+  renderTable();
+}
